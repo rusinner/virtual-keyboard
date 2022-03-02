@@ -43,7 +43,23 @@
   width: 12%;
 }
 .keyboard .keyboard__keys .keyboard__key--extra-wide {
-  width: 35%;
+  width: 25%;
+}
+.keyboard .keyboard__keys .keyboard__key--activatable::after {
+  content: "";
+  top: 0.5vh;
+  right: 4%;
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+.keyboard .keyboard__keys .keyboard__key--activatable .keyboard__key--active::after {
+  background: #08ff00;
+}
+.keyboard .keyboard__keys .keyboard__key--activatable .keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.125);
 }
 
 .keyboard__hidden {
