@@ -19,7 +19,7 @@ const Keyboard = {
        this.elements.main = document.createElement("div");
        this.elements.keysContainer = document.createElement("div");
        //setup main elements
-       this.elements.main.classList.add("keyboard","keyboard--hidden");
+       this.elements.main.classList.add("keyboard","1keyboard--hidden");
        this.elements.keysContainer.classList.add("keyboard__keys");
        this.elements.keysContainer.appendChild(this._createKeys());
        //add to DOM
@@ -81,8 +81,8 @@ const Keyboard = {
                     break;
 
                     case "space":
-                        keyElement.classList.add("keyboard__key--extra--wide" );
-                        keyElement.innerHTML = createIconHTML("spacebar");
+                        keyElement.classList.add("keyboard__key--extra-wide" );
+                        keyElement.innerHTML = createIconHTML("space_bar");
                         keyElement.addEventListener("click", () =>{
                         this.properties.value += " ";
                         this._triggerEvent("oninput");
@@ -133,11 +133,17 @@ const Keyboard = {
       },
 
       open(initialValue , oninput , onclose){
-        
+        this.properties.value = initialValue || "";
+        this.eventHandlers.oninput = oninput;
+        this.eventHandlers.onclose = onclose;
+        this.elements.main.classList.remove("keyboard--hidden");
       },
 
       close(){
-
+        this.properties.value = "";
+        this.eventHandlers.oninput = oninput;
+        this.eventHandlers.onclose = onclose;
+        this.elements.main.classList.add("keyboard--hidden");
       }
 };
 
