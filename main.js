@@ -21,6 +21,7 @@ const Keyboard = {
        //setup main elements
        this.elements.main.classList.add("keyboard","1keyboard--hidden");
        this.elements.keysContainer.classList.add("keyboard__keys");
+       this.elements.keysContainer.appendChild(this._createKeys());
        //add to DOM
        this.elements.main.appendChild(this.elements.keysContainer);
        document.body.appendChild(this.elements.main);
@@ -110,9 +111,15 @@ const Keyboard = {
 
             }
 
+            fragment.appendChild(keyElement);
+
+            if(insertLineBreak){
+                fragment.appendChild(document.createElement("br"));
+            }
+
           } );
 
-
+       return fragment;
 
      },
 
